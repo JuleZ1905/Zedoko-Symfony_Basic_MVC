@@ -1,4 +1,24 @@
-<div class="flex flex-col w-96">
-    <img src="" class="w-20" alt="Potplane" />
-    <span class="text-xl">Paper Plane Pro Tournament Foundation</span>
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <link rel="shortcut icon" href="{{ asset('media/potplane_logo.png') }}" type="image/x-icon">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+<div>
+    <div class="w-48">
+        <figure>
+            <img src="{{ asset('media/potplane_logo.png') }}" alt="Potplane" />
+            <figcaption>Created by DALL·E 2</figcaption>
+        </figure>
+
+    </div>
+    <span class="text-xl font-bold text-amber-800">Paper Plane Pro Tournament Foundation</span>
 </div>
+</body>
+</html>

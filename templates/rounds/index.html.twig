@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <link rel="shortcut icon" href="{{ asset('media/potplane_logo.png') }}" type="image/x-icon">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Plane Model</th>
+        <th>Distance Travelled</th>
+        <th>Participant</th>
+        <th>Date</th>
+    </tr>
+
+    <tr>
+        <td>{{ round.id }}</td>
+        <td>{{ round.planeModel }}</td>
+        <td>{{ round.distanceTravelled }}</td>
+        <td>{{ round.participant }}</td>
+        <td>{{ round.date }}</td>
+    </tr>
+
+</table>
+</body>
+</html>
