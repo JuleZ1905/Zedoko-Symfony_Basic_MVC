@@ -3,30 +3,37 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo</title>
+    <title>Results</title>
     <link rel="shortcut icon" href="{{ asset('media/potplane_logo.png') }}" type="image/x-icon">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
 <body>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Plane Model</th>
-        <th>Distance Travelled</th>
-        <th>Participant</th>
-        <th>Date</th>
-    </tr>
+{% for round in rounds %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Plane Model</th>
+            <th>Distance Travelled</th>
+            <th>Participant</th>
+            <th>Date</th>
+        </tr>
 
-    <tr>
-        <td>{{ round.id }}</td>
-        <td>{{ round.planeModel }}</td>
-        <td>{{ round.distanceTravelled }}</td>
-        <td>{{ round.participant }}</td>
-        <td>{{ round.date }}</td>
-    </tr>
-
-</table>
+        {% for game in round.games %}
+            <tr>
+                <td>{{ round.id }}</td>
+                <td>{{ game.planeModel }}</td>
+                <td>{{ game.distanceTravelled }}</td>
+                <td>{{ game.participant }}</td>
+                <td>{{ round.date }}</td>
+            </tr>
+        {% endfor %}
+        <a class="text-amber-500" href="{{ path('single_round', {id: round.id}) }}">Round {{ round.id }}</a>
+    </table>
+{% endfor %}
+{% if rounds|length == 1 %}
+    <a class="underline" href="{{ path('all_rounds') }}">All Rounds</a>
+{% endif %}
 </body>
 </html>

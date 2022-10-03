@@ -5,18 +5,16 @@ namespace App\Entity;
 class Round
 {
     private int $id;
-    private string $planeModel;
-    private float $distanceTravelled;
-    private string $participant;
+    private array $games;
     private string $date;
 
-    public function __construct(int $id, string $planeModel, float $distanceTravelled, string $participant, string $date)
+    public function __construct(int $id, string $date, ...$games)
     {
         $this->id = $id;
-        $this->planeModel = $planeModel;
-        $this->distanceTravelled = $distanceTravelled;
-        $this->participant = $participant;
         $this->date = $date;
+        foreach ($games as $game) {
+            $this->games[] = $game;
+        }
     }
 
     /**
@@ -38,66 +36,29 @@ class Round
     /**
      * @return string
      */
-    public function getPlaneModel(): string
-    {
-        return $this->planeModel;
-    }
-
-    /**
-     * @param string $planeModel
-     */
-    public function setPlaneModel(string $planeModel): void
-    {
-        $this->planeModel = $planeModel;
-    }
-
-    /**
-     * @return float
-     */
-    public function getDistanceTravelled(): float
-    {
-        return $this->distanceTravelled;
-    }
-
-    /**
-     * @param float $distanceTravelled
-     */
-    public function setDistanceTravelled(float $distanceTravelled): void
-    {
-        $this->distanceTravelled = $distanceTravelled;
-    }
-
-    /**
-     * @return string
-     */
-    public function getParticipant(): string
-    {
-        return $this->participant;
-    }
-
-    /**
-     * @param string $participant
-     */
-    public function setParticipant(string $participant): void
-    {
-        $this->participant = $participant;
-    }
-
-    /**
-     * @return int
-     */
     public function getDate(): string
     {
         return $this->date;
     }
 
     /**
-     * @param int $date
+     * @param string $date
      */
-    public function setDate(int $date): void
+    public function setDate(string $date): void
     {
         $this->date = $date;
     }
 
+    /**
+     * @return string
+     */
+    public function getGames(): array
+    {
+        return $this->games;
+    }
 
+    public function addGame(Game $game): void
+    {
+        $this->games[] = $game;
+    }
 }
