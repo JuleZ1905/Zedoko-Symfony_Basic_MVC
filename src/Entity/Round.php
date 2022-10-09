@@ -2,13 +2,28 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity]
 class Round
 {
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private int $id;
+
+    #[ORM\OneToMany(mappedBy: 'round', targetEntity: Game::class)]
     private array $games;
+
+    #[ORM\Column(type: 'date')]
     private string $date;
 
-    public function __construct(int $id, string $date, ...$games)
+    /**
+     * @param int $id
+     * @param array $games
+     * @param string $date
+     */
+    public function construct(int $id, string $date, ...$games): void
     {
         $this->id = $id;
         $this->date = $date;
