@@ -1,19 +1,35 @@
 <?php
 
 namespace App\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\Entity]
 class Game
 {
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private int $id;
+
+    #[ORM\Column(type: 'string', length: 255)]
     private string $planeModel;
+
+    #[ORM\Column(type: 'decimal')]
     private float $distanceTravelled;
+
+    #[ORM\Column(type: 'string', length: 255)]
     private string $participant;
+
+    #[ORM\ManyToOne(targetEntity: Round::class, inversedBy: 'games')]
+    private Round $round;
 
     /**
      * @param string $planeModel
      * @param float $distanceTravelled
      * @param string $participant
      */
-    public function __construct(string $planeModel, float $distanceTravelled, string $participant)
+
+    public function construct(string $planeModel, float $distanceTravelled, string $participant) : void
     {
         $this->planeModel = $planeModel;
         $this->distanceTravelled = $distanceTravelled;

@@ -29,11 +29,11 @@
                 <td>{{ round.date }}</td>
             </tr>
         {% endfor %}
-        <a class="text-amber-500" href="{{ path('single_round', {id: round.id}) }}">Round {{ round.id }}</a>
+        <a class="text-blue-800 underline" href="{{ path('single_round', {id: round.id}) }}">Round {{ round.id }}</a>
     </table>
 {% endfor %}
 {% if rounds|length == 1 %}
-    <a class="underline" href="{{ path('all_rounds') }}">All Rounds</a>
+    <a class="text-blue-800 underline" href="{{ path('all_rounds') }}">All Rounds</a>
 {% endif %}
 </body>
 </html>
